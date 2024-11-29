@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background-color: #fff;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    background-color: #5A7D3C;
+}
+.logo {
+    height: 50px;
+    object-fit: contain;
+    margin-right: 20px;
+}
+
+.navegacion a {
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+.navegacion a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.5s;
+}
+
+.navegacion a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navegacion .btn_login {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 4px;
+    transition: .5s;
+}
+
+.navegacion .btn_login:hover {
+    background: #fff;
+    color: #5A7D3C;
+}
+
+
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  .activity-image img {
+    width: 100%;
+    border-radius: 8px;
+  }
+  .details {
+    margin-top: 20px;
+  }
+  .details h2 {
+    color: #333;
+  }
+  .tickets {
+    background-color: #fdf9ea;
+    padding: 15px;
+    border-left: 4px solid #f0c808;
+    margin: 20px 0;
+    border-radius: 5px;
+  }
+  .tickets p {
+    margin: 0;
+  }
+  .professors {
+    margin-top: 20px;
+  }
+  .professors h3 {
+    margin-bottom: 10px;
+  }
+  .professors ul {
+    list-style: none;
+    padding: 0;
+  }
+  .professors ul li {
+    margin: 5px 0;
+    background-color: #e8f5e9;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+/*inscripcion*/
+.card_inscripcion {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 9999;
+    display: none; /* Oculto por defecto */
+}
+
+.card_inscripcion.mostrar {
+    display: block; /* Muestra la tarjeta */
+}
+
+.card_content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.close_card {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.btn_enviar {
+    background-color: #5A7D3C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn_enviar:hover {
+    background-color: #48652E;
+}
+
+.btn_inscribirse{
+  background-color: #5A7D3C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.btn_inscribirse_card{
+  color: white;
+  text-decoration: none;
+}
+
+
+  /*Footer*/
+
+footer{
+    background: #98d364;
+    padding: 60px 0 30px 0 ;
+    margin: auto;
+    overflow: hidden;
+}
+
+.contenedor-footer{
+
+    display: flex;
+    width: 90%;
+    justify-content: space-evenly;
+    margin: auto;
+    padding-bottom: 50px;
+    border-bottom: 1px solid #F2F2F2;
+}
+
+.cont-foot{
+    text-align: center;
+
+}
+
+.cont-foot h4{
+    color: #f2f2f2;
+    border-bottom: 3px solid #5A7D3C ;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    
+}
+
+.cont-foot P {
+    color: #F2F2F2;
+}
+
+.titulo-final{
+    text-align: center;
+    font-size: 24PX;
+    margin: 20PX 0 0 0;
+    color: #F2F2F2;
+}

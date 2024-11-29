@@ -1,0 +1,67 @@
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    width: 100%;
+    height: calc(100vh - 80px);  /* Asegúrate de que el contenedor tenga altura completa */
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 80px;
+}
+
+/* Tarjeta de bienvenida */
+.card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%; /* Asegúrate de que ocupe el 100% del contenedor */
+    max-width: 800px; /* Ancho máximo */
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Título */
+.card h1 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    color: #6f42c1;
+}
+
+/* Texto */
+.card p {
+    font-size: 2em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Botón */
+.btn {
+    display: inline-block;
+    background: #6f42c1;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #563d7c;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,23 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{% static 'css/bienvenida.css' %}">
+{% endblock estilos %}
+
+{% block contenido %}
+
+<div class="container">
+    <div class="card">
+        <h1>¡Bienvenido, {{ nombre }}!</h1>
+        <p>Gracias por registrarte en nuestro sistema. Estamos encantados de que te unas a nuestra comunidad.</p>
+        <p><strong>Tu contraseña temporal:</strong> Los primeros 5 dígitos de tu RUT.</p>
+        <p>Por favor, utiliza esta contraseña para iniciar sesión y recuerda cambiarla después por una más segura.</p>
+        <a href="{% url 'login' %}" class="btn">Ir a Iniciar Sesión</a>
+    </div>
+</div>
+
+{% endblock contenido %}
+
+{% block js%}
+{% endblock js %}

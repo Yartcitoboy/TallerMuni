@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yoga</title>
+  <link rel="stylesheet" href="/css/talleres-pages/taller-yoga.css">
+</head>
+<body>
+    <section class="header_img">    
+        <header>
+            <img src="/img/logo_municipal.png" alt="Logo Municipalidad" class="logo">
+            <nav class="navegacion">
+                <a href="/index.html">Inicio</a>
+                <a href="/views/talleres.html" onclick="cargarTalleres()">Talleres</a>
+                <a href="#">Contacto</a>
+                <button class="btn_login" onclick="mostrarLogin()">Acceder</button>
+            </nav>
+        </header>
+    </section>
+  <div class="container">
+    <div class="activity-image">
+      <img src="../img/Yoga.jpg" alt="Yoga 2024">
+    </div>
+    <div class="details">
+      <h2>Yoga 2024</h2>
+      <div class="tickets">
+        <p><strong>Tickets de la Actividad:</strong> 25 cupos disponibles</p>
+        <p><strong>Ticket General:</strong> Edad 13-30 años | Gratis</p>
+        <p><strong>Inscripción Administrativa:</strong> Para inscribirse se debe contactar con el administrador.</p>
+      </div>
+      <div class="professors">
+        <h3>Profesores</h3>
+        <ul>
+          <li>Bravo Adams, César Leonardo Keir</li>
+          <li>Bustamante Saavedra, Elson Francisco</li>
+          <li>Dos Santos Rodríguez, Edivalter</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="details">
+    <h2>Yoga 2024</h2>
+    <div class="tickets">
+        <p><strong>Tickets de la Actividad:</strong> 25 cupos disponibles</p>
+        <p><strong>Ticket General:</strong> Edad 13-30 años | Gratis</p>
+        <p><strong>Inscripción Administrativa:</strong> Para inscribirse se debe contactar con el administrador.</p>
+    </div>
+    <div class="professors">
+        <h3>Profesores</h3>
+        <ul>
+            <li>Bravo Adams, César Leonardo Keir</li>
+            <li>Bustamante Saavedra, Elson Francisco</li>
+            <li>Dos Santos Rodríguez, Edivalter</li>
+        </ul>
+    </div>
+    <!-- Botón de inscripción -->
+    <button class="btn_inscribirse" onclick="mostrarInscripcion()">Inscribirse</button>
+</div>
+
+<!-- Tarjeta emergente para la inscripción -->
+<div class="card_inscripcion ocultar" id="cardInscripcion">
+    <div class="card_content">
+        <button class="close_card" onclick="cerrarInscripcion()">X</button>
+        <h2>Estas seguro de esta accion</h2>
+        <button class="btn_enviar"><a class="btn_inscribirse_card" href="/index.html">Inscribirse</a></button>
+    </div>
+</div>
+
+  <footer>
+    <div class="contenedor-footer">
+        <div class="cont-foot">
+            <h4>Telefono</h4>
+            <p>+569771234565</p>
+        </div>
+        <div class="cont-foot">
+            <h4>Direccion</h4>
+            <p>Av. Concha y Toro 462, Puente Alto, Santiago</p>
+        </div>
+    </div>
+    <h2 class="titulo-final">&copy;Duoc Uc Puente Alto</h2>
+</footer>
+  <script src="script.js"></script>
+  <script src="/js/talleres_pages/taller_yoga.js"></script>
+  <script src="/js/talleres.js"></script>
+  
+  
+</body>
+</html>

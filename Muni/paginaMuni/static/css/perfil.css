@@ -1,0 +1,172 @@
+body {
+  background-color: #ddffd4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.carta {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.carta .izquierda {
+  width: 30%;
+  background: #48652E;
+  padding: 40px 30px;
+  text-align: center;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imagen-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 15px; /* Centrar la imagen horizontalmente */
+}
+
+.imagen-container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 5px solid #fff;
+}
+
+.imagen-container .cambiar-imagen {
+  position: absolute;
+  bottom: -15px; /* Más abajo de la imagen */
+  right: -15px; /* Más a la derecha de la imagen */
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  width: 50px; /* Tamaño mayor para más visibilidad */
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 20px; /* Tamaño del icono */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.imagen-container .cambiar-imagen:hover {
+  background-color: #005bb5;
+  transform: scale(1.1);
+}
+
+
+.carta .izquierda h4 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.carta .izquierda p {
+  font-size: 1.2rem;
+}
+
+.carta .derecha {
+  width: 70%;
+  background: #fff;
+  padding: 40px;
+  overflow-y: auto;
+  position: relative; /* Para posicionar el botón editar */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 60px; /* Espacio para el botón */
+}
+
+.carta .derecha .info,
+.carta .derecha .projects {
+  margin-bottom: 30px;
+}
+
+.carta .derecha .info h3,
+.carta .derecha .projects h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #353c4e;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.carta .derecha .info_data,
+.carta .derecha .projects_data {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.carta .derecha .info_data .data,
+.carta .derecha .projects_data .data {
+  width: 45%;
+  margin-bottom: 20px;
+}
+
+.carta .derecha .info_data .data h4,
+.carta .derecha .projects_data .data h4 {
+  font-size: 1.2rem;
+  color: #353c4e;
+  margin-bottom: 5px;
+}
+
+.carta .derecha .info_data .data p,
+.carta .derecha .projects_data .data p {
+  font-size: 1rem;
+  color: #919aa3;
+}
+
+.carta .social_media ul {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.carta .social_media ul li {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(to right, #01a9ac, #01dbdf);
+  margin: 0 10px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.carta .social_media ul li a {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+/* Estilo del botón Editar Perfil */
+.editar-perfil {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.editar-perfil:hover {
+  background-color: #005bb5;
+  transform: scale(1.1);
+}

@@ -1,0 +1,49 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block estilos %}
+{% endblock estilos %}
+
+{% block contenido %}
+
+    
+    <div class="carta">
+        <div class="izquierda">
+            <div class="imagen-container">
+                <img src="{% static 'img/perfil-del-usuario.png' %}" alt="user" id="user-image">
+                <button class="cambiar-imagen" onclick="document.getElementById('input-cambiar-imagen').click()">✎</button>
+                <input type="file" id="input-cambiar-imagen" accept="image/*" onchange="cambiarImagen(event)" style="display: none;">
+            </div>
+            <h4 id="nombre">Roberto de Miro</h4>
+            <p id="rol">Adulto Mayor</p>
+        </div>
+        <div class="derecha">
+            <div class="info">
+                <h3>Información</h3>
+                <div class="info_data">
+                    <div class="data">
+                        <h4>Email</h4>
+                        <p id="email">R.Demiro@gmail.com</p>
+                    </div>
+                    <div class="data">
+                        <h4>Celular</h4>
+                        <p id="celular">+56977298316</p>
+                    </div>
+                    <div class="data">
+                        <h4>Dirección</h4>
+                        <p id="direccion">Calle Falsa 123, Santiago</p>
+                    </div>
+                    <div class="data">
+                        <h4>RUT</h4>
+                        <p id="rut">12.345.678-9</p>
+                    </div>
+                </div>
+            </div>
+            <button class="editar-perfil" onclick="editarPerfil()">Editar Perfil</button>
+        </div>
+    </div>
+
+{% endblock contenido %}
+
+{% block js %}
+{% endblock js %}

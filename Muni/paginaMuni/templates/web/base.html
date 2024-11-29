@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block estilos %}
+    {% endblock estilos %}
+    <title>Talleres Puente Alto</title>
+</head>
+
+<body>
+    <section>
+        <header>
+            <img src="{% static 'img/logo_municipal.png' %}" alt="Logo Municipalidad" class="logo">
+
+            <nav class="navegacion">
+                <a href="{% url 'index' %}">Inicio</a>
+                <a href="{% url 'talleres' %}" onclick="cargarTalleres()">Talleres</a>
+                <a href="#">Contacto</a>
+
+                {% if usuario_nombre %}
+                <!-- Formulario de cerrar sesión -->
+                <form action="{% url 'logout' %}" method="post" class="logout-form">
+                    {% csrf_token %}
+                    <button type="submit">Cerrar sesión</button>
+                </form>
+                {% else %}
+                <!-- Botones de iniciar sesión y registro -->
+                <a href="{% url 'login' %}">Iniciar sesión</a>
+                <a href="{% url 'registro' %}">Registrarse</a>
+                {% endif %}
+            </nav>
+        </header>
+    </section>
+
+    {% block contenido %}
+
+    {% endblock contenido %}
+
+    <footer>
+        <div class="contenedor-footer">
+            <div class="cont-foot">
+                <h4>Telefono</h4>
+                <p>+569771234565</p>
+            </div>
+            <div class="cont-foot">
+                <h4>Direccion</h4>
+                <p>Av. Concha y Toro 462, Puente Alto, Santiago</p>
+            </div>
+        </div>
+        <h2 class="titulo-final">&copy;Duoc Uc Puente Alto</h2>
+    </footer>
+
+
+
+    {% block js %}
+    {% endblock js%}
+
+</body>
+
+</html>

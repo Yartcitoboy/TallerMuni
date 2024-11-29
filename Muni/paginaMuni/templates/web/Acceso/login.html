@@ -1,0 +1,44 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock estilos %}
+
+{% block contenido %}
+<div class="form-container">
+    <div class="form">
+        <div class="tab-title">
+            <h1>Iniciar Sesión</h>
+        </div>
+
+
+        <div class="tab-content">
+            <!-- Log In Form -->
+            <div id="login">
+                <h2>Bienvenido!</h2>
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="field-wrap">
+                        <label>Corre Electronico<span class="req">*</span></label>
+                        <input type="email" name="email" required autocomplete="off" />
+                    </div>
+
+                    <div class="field-wrap">
+                        <label>Contraseña<span class="req">*</span></label>
+                        <input type="password" name="password" required autocomplete="off" />
+                    </div>
+
+                    <p class="forgot"><a href="#">Olvido su contraseña?</a></p>
+
+                    <button type="submit" class="button button-block">Log In</button>
+                </form>
+            </div>
+        </div><!-- tab-content -->
+    </div> <!-- /form -->
+</div>
+{% endblock contenido %}
+
+{% block js %}
+<script src="{% static 'js/form.js' %}"></script>
+{% endblock js %}
