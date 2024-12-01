@@ -17,11 +17,11 @@
             <!-- Log In Form -->
             <div id="login">
                 <h2>Bienvenido!</h2>
-                <form action="{% url 'login' %}" method="post">
+                <form action="{% url 'login' %}" method="post" onsubmit="logFormData()">
                     {% csrf_token %}
                     <div class="field-wrap">
                         <label>Corre Electronico<span class="req">*</span></label>
-                        <input type="email" name="email" required autocomplete="off" />
+                        <input type="email" name="username" required autocomplete="off" />
                     </div>
 
                     <div class="field-wrap">

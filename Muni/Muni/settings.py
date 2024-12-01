@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -73,7 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Muni.wsgi.application'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/login/'
 
 
 # Database
@@ -97,6 +98,8 @@ DATABASES = {
     },
 }
 
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
@@ -119,6 +122,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'paginaMuni.Usuario'
+
+SESSION_COOKIE_AGE = 1209600  # 2 semanas, por defecto
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False 
+
 
 
 # Internationalization
@@ -148,3 +155,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'index'

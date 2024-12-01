@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block estilos %}
@@ -19,20 +20,18 @@
 
             <nav class="navegacion">
                 <a href="{% url 'index' %}">Inicio</a>
-                <a href="{% url 'talleres' %}" onclick="cargarTalleres()">Talleres</a>
+                <a href="{% url 'taller' %}" onclick="cargarTalleres()">Talleres</a>
                 <a href="#">Contacto</a>
 
-                {% if usuario_nombre %}
+                {% if request.user.is_authenticated %}
                 <!-- Formulario de cerrar sesión -->
-                <form action="{% url 'logout' %}" method="post" class="logout-form">
-                    {% csrf_token %}
-                    <button type="submit">Cerrar sesión</button>
-                </form>
+                <a href="{% url 'exit' %}">Salir</a>
                 {% else %}
                 <!-- Botones de iniciar sesión y registro -->
                 <a href="{% url 'login' %}">Iniciar sesión</a>
                 <a href="{% url 'registro' %}">Registrarse</a>
                 {% endif %}
+
             </nav>
         </header>
     </section>

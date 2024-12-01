@@ -1,0 +1,78 @@
+<!-- web/talleres/taller_inscripcion.html -->
+
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block estilos %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/taller.css' %}">
+{% endblock estilos %}
+
+{% block contenido %}
+<div class="container">
+    <h1>Inscripción al Taller</h1>
+
+    <!-- Información del Usuario -->
+    <div class="user-info">
+      <p><strong>Nombre:</strong> {{ usuario.get_full_name }}</p>
+      <p><strong>RUT:</strong> {{ usuario.username }}</p>  
+    </div>
+
+    <!-- Formulario de inscripción -->
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Selección del taller -->
+        <div class="mb-3">
+            <label for="taller" class="form-label">Seleccione el taller</label>
+            <select id="taller" name="taller" class="form-select" required>
+                <option selected disabled>Seleccione una opción</option>
+                {% for taller in talleres %}
+                <option value="{{ taller.id }}" data-info='{"nombre": "{{ taller.nombre }}", "descripcion": "{{ taller.descripcion }}", "duracion": "{{ taller.duracion }}", "instructor": "{{ taller.instructor }}"}'>
+                    {{ taller.nombre }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- Información del taller seleccionado -->
+        <div id="taller-info" class="taller-info">
+            <h4 id="taller-nombre"></h4>
+            <p><strong>Instructor:</strong> <span id="taller-instructor"></span></p>
+            <p><strong>Descripción:</strong> <span id="taller-descripcion"></span></p>
+            <p><strong>Duración:</strong> <span id="taller-duracion"></span></p>
+        </div>
+
+        <!-- Días disponibles -->
+        <div class="mb-3 mt-3">
+            <label class="form-label">Días disponibles</label>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="dia_seleccionado" value="Lunes" id="lunes">
+                <label class="form-check-label" for="lunes">Lunes (10:00 - 12:00)</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="dia_seleccionado" value="Miércoles" id="miércoles">
+                <label class="form-check-label" for="miércoles">Miércoles (14:00 - 16:00)</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="dia_seleccionado" value="Viernes" id="viernes">
+                <label class="form-check-label" for="viernes">Viernes (18:00 - 20:00)</label>
+            </div>
+        </div>
+
+        <!-- Confirmación -->
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="confirmacion" required>
+            <label class="form-check-label" for="confirmacion">Confirmo mi inscripción al taller seleccionado</label>
+        </div>
+
+        <!-- Botón de inscripción -->
+        <button type="submit" class="btn btn-primary w-100">Inscribirme</button>
+    </form>
+</div>
+{% endblock contenido %}
+
+{% block js %}
+<script src="{% static 'js/taller.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock js %}

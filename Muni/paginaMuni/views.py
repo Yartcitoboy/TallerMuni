@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
-from .models import Usuario
+from .models import Usuario, Taller, Inscripcion
 from django.contrib import messages
-from django.core.exceptions import ValidationError
-from django.contrib.auth.hashers import check_password 
 from django.contrib.auth.hashers import make_password
 from django.core.mail import send_mail
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
+from .form import InscripcionForm
+
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 # Muni/paginaMuni/views.py
@@ -19,8 +21,37 @@ def index(request):
 
     return render(request, 'web/index.html', {'usuario_nombre': usuario_nombre})
 
-def talleres(request):
-    return render(request, 'web/navbar/talleres.html')
+@login_required
+def taller(request):
+    if request.method == 'POST':
+        form = InscripcionForm(request.POST)
+        if form.is_valid():
+            # Guardamos la inscripción con los datos del usuario logueado
+            inscripcion = form.save(commit=False)
+            inscripcion.usuario_nombre = request.user.get_full_name()  # O cualquier campo que desees mostrar
+            inscripcion.usuario_rut = request.user.username  # Si tu 'RUT' es el nombre de usuario, o personalízalo
+            inscripcion.save()
+            return redirect('inscripcion_exitosa')  # Redirige a una página de confirmación
+    else:
+        form = InscripcionForm()
+
+    return render(request, 'web/talleres/taller.html', {'form': form, 'usuario': request.user})
+
+@login_required
+def taller_inscripcion(request):
+    # Consultamos todos los talleres disponibles
+    talleres = Taller.objects.all()
+
+    if request.method == 'POST':
+        form = InscripcionForm(request.POST)
+        if form.is_valid():
+            # Guardar la inscripción
+            form.save()
+            return redirect('inscripcion_exito')  # Redirigir a una página de éxito
+    else:
+        form = InscripcionForm()
+
+    return render(request, 'web/talleres/taller_inscripcion.html', {'form': form, 'talleres': talleres})
 
 def registro(request):
     if request.method == "POST":
@@ -70,7 +101,7 @@ def login_view(request):
         print(f"Intentando autenticar: {email}")  # Mensaje de depuración
         usuario = authenticate(request, email=email, password=password)
         
-        if usuario:
+        if usuario is not None:
             login(request, usuario)
             messages.success(request, f"¡Bienvenido, {usuario.nombre}!")
             return redirect('index')
@@ -78,7 +109,7 @@ def login_view(request):
             messages.error(request, "Email o contraseña incorrectos.")
             print("Autenticación fallida.")  # Mensaje de depuración
 
-    return render(request, 'web/Acceso/login.html')
+    return render(request, 'registration/login.html')
 
 
 def mi_vista(request):
@@ -88,3 +119,6 @@ def mi_vista(request):
 def bienvenida(request):
     return render(request, 'web/bienvenida.html')
 
+def exit(request):
+    logout(request)
+    return redirect('index')

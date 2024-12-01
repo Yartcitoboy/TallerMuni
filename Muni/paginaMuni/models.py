@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
@@ -33,3 +34,22 @@ class Usuario(AbstractBaseUser):
 
     def __str__(self):
         return self.email
+    
+class Taller(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    duracion = models.CharField(max_length=100)
+    instructor = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre
+
+class Inscripcion(models.Model):
+    taller = models.ForeignKey(Taller, on_delete=models.CASCADE)
+    usuario_nombre = models.CharField(max_length=100)
+    usuario_rut = models.CharField(max_length=20)
+    dias_seleccionado = models.CharField(max_length=255)  # Puedes usar un campo de texto para almacenar los días seleccionados
+    confirmacion = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.usuario_nombre} - {self.taller.nombre}"

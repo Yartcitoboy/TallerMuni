@@ -1,0 +1,38 @@
+.container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+h1 {
+  text-align: center;
+  color: #333;
+}
+.user-info {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.user-info p {
+  margin: 0;
+}
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+.taller-info {
+  background-color: #f0f8ff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 20px;
+  display: none;
+}
+.taller-info p {
+  margin: 5px 0;
+}

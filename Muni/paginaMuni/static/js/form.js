@@ -49,3 +49,9 @@ document.querySelectorAll('.form input, .form textarea').forEach((input) => {
       });
     });
   });
+
+  function logFormData() {
+    const email = document.querySelector('input[name="email"]').value;
+    const password = document.querySelector('input[name="password"]').value;
+    console.log("Datos del formulario:", { email, password });
+}
