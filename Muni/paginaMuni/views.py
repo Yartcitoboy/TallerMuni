@@ -23,6 +23,8 @@ def index(request):
 
 @login_required
 def taller(request):
+    talleres = Taller.objects.all()
+    print(talleres)
     if request.method == 'POST':
         form = InscripcionForm(request.POST)
         if form.is_valid():
@@ -35,7 +37,7 @@ def taller(request):
     else:
         form = InscripcionForm()
 
-    return render(request, 'web/talleres/taller.html', {'form': form, 'usuario': request.user})
+    return render(request, 'web/talleres/taller.html', {'form': form,'talleres': talleres, 'usuario': request.user})
 
 @login_required
 def taller_inscripcion(request):
