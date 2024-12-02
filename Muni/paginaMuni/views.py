@@ -24,36 +24,61 @@ def index(request):
 @login_required
 def taller(request):
     talleres = Taller.objects.all()
-    print(talleres)
+    print("Vista 'taller' cargada")  # Log para saber que la vista fue llamada correctamente.
+
     if request.method == 'POST':
+        print("Método POST recibido")  # Verificar que se está recibiendo un POST.
+        print("Datos recibidos:", request.POST)  # Log de los datos enviados por el formulario.
+
         form = InscripcionForm(request.POST)
         if form.is_valid():
-            # Guardamos la inscripción con los datos del usuario logueado
+            print("Formulario válido")  # Verificar si el formulario pasa las validaciones.
             inscripcion = form.save(commit=False)
-            inscripcion.usuario_nombre = request.user.get_full_name()  # O cualquier campo que desees mostrar
-            inscripcion.usuario_rut = request.user.username  # Si tu 'RUT' es el nombre de usuario, o personalízalo
+            inscripcion.usuario_nombre = f"{request.user.nombre} {request.user.apellido1} {request.user.apellido2}"  # Nombre del usuario logueado.
+            inscripcion.usuario_rut = request.user.rut  # Usar el RUT como username.
+            inscripcion.dias = request.POST.get('dias')
             inscripcion.save()
-            return redirect('inscripcion_exitosa')  # Redirige a una página de confirmación
+            print("Inscripción guardada con éxito")  # Log para confirmar que se guardó la inscripción.
+            return redirect('inscripcion_exitosa')
+        else:
+            print("Formulario no válido")  # Log para ver qué falla si el formulario no es válido.
+            print("Errores del formulario:", form.errors)  # Log de errores del formulario.
     else:
+        print("Método GET recibido")  # Saber si se está cargando el formulario inicialmente.
         form = InscripcionForm()
 
-    return render(request, 'web/talleres/taller.html', {'form': form,'talleres': talleres, 'usuario': request.user})
+    return render(request, 'web/talleres/taller.html', {
+        'form': form,
+        'talleres': talleres,
+        'usuario': request.user,
+    })
 
-@login_required
+
+
 def taller_inscripcion(request):
-    # Consultamos todos los talleres disponibles
-    talleres = Taller.objects.all()
+    talleres = Taller.objects.all()  # Obtener todos los talleres disponibles
 
     if request.method == 'POST':
         form = InscripcionForm(request.POST)
         if form.is_valid():
-            # Guardar la inscripción
-            form.save()
-            return redirect('inscripcion_exito')  # Redirigir a una página de éxito
+            inscripcion = form.save(commit=False)  # No guardar aún en la base de datos
+            inscripcion.usuario_nombre = f"{request.user.nombre} {request.user.apellido1} {request.user.apellido2}"  # Concatenar el nombre manualmente
+            inscripcion.save()                    # Guarda la inscripción
+            return redirect('inscripcion_exito')  # Redirige a una página de éxito
     else:
         form = InscripcionForm()
+        
+    usuario_logueado = Usuario.objects.get(id=request.user.id)
 
-    return render(request, 'web/talleres/taller_inscripcion.html', {'form': form, 'talleres': talleres})
+    return render(request, 'web/talleres/taller_inscripcion.html', {
+        'form': form,
+        'talleres': talleres,
+        'usuario': request.user,  # Pasar el usuario logueado
+    })
+
+def inscripcion_exitosa(request):
+    return render(request, 'web/talleres/inscripcion_exitosa.html')
+
 
 def registro(request):
     if request.method == "POST":

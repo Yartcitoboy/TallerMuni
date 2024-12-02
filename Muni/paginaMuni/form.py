@@ -1,6 +1,5 @@
 from django import forms
-from .models import Usuario, Inscripcion, Taller
-
+from .models import Usuario, Inscripcion
 class UsuarioForm(forms.ModelForm):
     class Meta:
         model = Usuario
@@ -17,12 +16,15 @@ class LoginForm(forms.Form):
         'class': 'form-control', 'placeholder': 'Ingrese su contraseña'
     }))
     
-class InscripcionForm(forms.ModelForm):
-    taller = forms.ModelChoiceField(queryset=Taller.objects.all(), widget=forms.HiddenInput())
-    nombre_participante = forms.CharField(max_length=100)
-    rut_participante = forms.CharField(max_length=12)
-    dia_seleccionado = forms.CharField(max_length=100)
 
+class InscripcionForm(forms.ModelForm):
     class Meta:
         model = Inscripcion
-        fields = ['nombre_participante', 'rut_participante', 'taller', 'dia_seleccionado', 'confirmacion']
+        fields = ['taller', 'dias', 'confirmacion']  # Campos que el usuario puede completar
+        widgets = {
+            'dias': forms.CheckboxSelectMultiple(),  # Checkboxes para los días
+        }
+        labels = {
+            'dias': 'Días disponibles',
+            'confirmacion': 'Confirmo mi inscripción al taller seleccionado',
+        }
