@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from .form import InscripcionForm
-
+# Esto es ahora
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -105,16 +105,10 @@ def registro(request):
                 telefono=telefono,
                 password=make_password(contraseña_inicial),
             )
-            usuario.save()
+            usuario.save()                  # Guarda la inscripción
+            return redirect('bienvenida')
 
-            # Enviar correo al usuario
-            send_mail(
-                subject="Bienvenido a la plataforma",
-                message=f"Hola {nombre}, tu contraseña inicial es: {contraseña_inicial}.",
-                from_email="no-reply@tu-sitio.com",
-                recipient_list=[email],
-            )
-            messages.success(request, "Registro exitoso. Revisa tu correo para la contraseña.")
+            messages.error(request, "Hubo un problema al autenticar al usuario.")
             return redirect('login')
 
     return render(request, 'web/Acceso/registro.html')

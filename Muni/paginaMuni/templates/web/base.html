@@ -24,17 +24,9 @@
                 <a href="#">Contacto</a>
     
                 {% if request.user.is_authenticated %}
-                <!-- Dropdown con ícono de perfil -->
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle me-2" style="font-size: 1.5rem;"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger" href="{% url 'exit' %}">Cerrar sesión</a></li>
-                    </ul>
-                </div>
+
+                <a href="{% url 'exit' %}">Cerrar sesión</a>
+
                 {% else %}
                 <!-- Botones de iniciar sesión y registro -->
                 <a href="{% url 'login' %}">Iniciar sesión</a>
