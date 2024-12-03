@@ -30,3 +30,7 @@ stack.addEventListener("click", function (e) {
     }, 1200);
   }
 });
+
+function IrTaller(){
+  window.location.href = "taller.html";
+}

@@ -9,101 +9,104 @@
 
 {% block contenido %}
 
-    <!-- Sección de noticias -->
+<!-- Sección de noticias -->
 
-    <section class="header_img">
-      
-    </section>
+<section class="header_img">
+  <div class="bienvenida-container">
+    {% if request.user.is_authenticated %}
+      <div class="bienvenida-titulo">¡Bienvenido/a, {{ user.nombre | upper }}!</div>
+      <div class="bienvenida-mensaje">
+        Esta plataforma ha sido creada pensando en usted, para que pueda disfrutar de talleres diseñados especialmente para adultos mayores. Aquí encontrará actividades que le ayudarán a mantenerse activo/a, aprender nuevas habilidades y compartir momentos únicos con otros adultos mayores. ¡Nos alegra mucho que esté aquí!
+      </div>
+    {% else %}
+      <div class="bienvenida-titulo">¡Bienvenido/a!</div>
+      <div class="bienvenida-mensaje">
+        <p>Esta es una plataforma para adultos mayores, creada por la Municipalidad de Puente Alto, que le permitirá inscribirse en talleres y actividades diseñados especialmente para usted. Si ya tiene una cuenta, puede iniciar sesión para explorar todas las opciones. Si no, regístrese y únase a esta iniciativa que busca su bienestar y felicidad.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
 
-    <main>
-        <div class="content">
-            <h1>Talleres de Apoyo a la Tercera Edad</h1>
-            <p>
-            La Municipalidad de Puente Alto ha lanzado un programa de talleres para adultos mayores, con el objetivo de ofrecer espacios de aprendizaje y esparcimiento. Estos talleres incluyen actividades como alfabetización digital, cocina, yoga y más. A través de una nueva aplicación web, los adultos mayores podrán inscribirse en los talleres, postularse como instructores y gestionar sus actividades de manera fácil y accesible. Este proyecto piloto busca mejorar la calidad de vida de nuestros adultos mayores y se expandirá a otras municipalidades si tiene éxito.
-            </p>
+<main>
+  <div class="content">
+    <h1>Talleres de Apoyo a la Tercera Edad</h1>
+    <p>
+      La Municipalidad de Puente Alto ha lanzado un programa de talleres para adultos mayores, con el objetivo de
+      ofrecer espacios de aprendizaje y esparcimiento. Estos talleres incluyen actividades como alfabetización digital,
+      cocina, yoga y más. A través de una nueva aplicación web, los adultos mayores podrán inscribirse en los talleres,
+      postularse como instructores y gestionar sus actividades de manera fácil y accesible. Este proyecto piloto busca
+      mejorar la calidad de vida de nuestros adultos mayores y se expandirá a otras municipalidades si tiene éxito.
+    </p>
 
-            
-          <button class="btn">Explore More</button>
-        </div>
-  
-        <div class="stack">
-          <div class="card">
-            <img
-              src="{% static 'img/bordado.jpg' %}"
-              alt="" />
-              <div class="card-title">Taller Bordeado</div>
-          </div>
-          <div class="card">
-            <img
-              src="{% static 'img/clase-de-zumba.jpg' %}"
-              alt="" />
-              <div class="card-title">Taller Zumba</div>
-          </div>
-          <div class="card">
-            <img
-              src="{% static 'img/CUECA.jpg' %}"
-              alt="" />
-              <div class="card-title">Taller Cueca</div>
-          </div>
-          <div class="card">
-            <img
-              src="{% static 'img/educacion_fisica.jpg' %}"
-              alt="" />
-              <div class="card-title">Taller Educación Fisica</div>
-          </div>
-          <div class="card">
-            <img
-              src="{% static 'img/Yoga.jpg' %}"
-              alt="" />
-              <div class="card-title">Taller Yoga</div>
-          </div>
-          <div class="card">
-            <img
-              src="{% static 'img/lectura.jpeg' %}"
-              alt="" />
-              <div class="card-title">Taller Lectura</div>
-          </div>
-        </div>
-      </main>
 
-    <section class="galeria">
-        <div class="contenedor">
-            <h2 class="titulo_galeria">Galería</h2>
-            <div class="imagenes_galeria">
-                <div class="imagen_galeria">
-                    <img src="{% static 'img/Yoga.jpg' %}" alt="">
-                </div>
-                <div class="imagen_galeria">
-                    <img src="{% static 'img/natacion.jpg' %}" alt="">
-                </div>
-                <div class="imagen_galeria">
-                    <img src="{% static 'img/CUECA.jpg' %}" alt="">
-                </div>
-                <div class="imagen_galeria">
-                    <img src="{% static 'img/clase-de-zumba.jpg' %}" alt="">
-                </div>
-                <div class="imagen_galeria">
-                    <img src="{% static 'img/bordado.jpg' %}" alt="">
-                </div>
-                <div class="imagen_galeria">
-                    <img src="{% static 'img/escritura.jpg' %}" alt="">
-                </div>
-                <div class="imagen_galeria">
-                    <img src="{% static 'img/tango.jpg' %}" alt="">
-                </div>
-                <div class="imagen_galeria">
-                    <img src="{% static 'img/lectura.jpeg' %}" alt="">
-                </div>
-                <div class="imagen_galeria">
-                    <img src="{% static 'img/educacion_fisica.jpg' %}" alt="">
-                </div>
-            </div>
-        </div>
-    </section>
+    <a href="{% url 'taller' %}"><button class="btn">Explorar más</button></a>
+  </div>
+
+  <div class="stack">
+    <div class="card">
+      <img src="{% static 'img/bordado.jpg' %}" alt="" />
+      <div class="card-title">Taller Bordeado</div>
+    </div>
+    <div class="card">
+      <img src="{% static 'img/clase-de-zumba.jpg' %}" alt="" />
+      <div class="card-title">Taller Zumba</div>
+    </div>
+    <div class="card">
+      <img src="{% static 'img/CUECA.jpg' %}" alt="" />
+      <div class="card-title">Taller Cueca</div>
+    </div>
+    <div class="card">
+      <img src="{% static 'img/educacion_fisica.jpg' %}" alt="" />
+      <div class="card-title">Taller Educación Fisica</div>
+    </div>
+    <div class="card">
+      <img src="{% static 'img/Yoga.jpg' %}" alt="" />
+      <div class="card-title">Taller Yoga</div>
+    </div>
+    <div class="card">
+      <img src="{% static 'img/lectura.jpeg' %}" alt="" />
+      <div class="card-title">Taller Lectura</div>
+    </div>
+  </div>
+</main>
+
+<section class="galeria">
+  <div class="contenedor">
+    <h2 class="titulo_galeria">Galería</h2>
+    <div class="imagenes_galeria">
+      <div class="imagen_galeria">
+        <img src="{% static 'img/Yoga.jpg' %}" alt="">
+      </div>
+      <div class="imagen_galeria">
+        <img src="{% static 'img/natacion.jpg' %}" alt="">
+      </div>
+      <div class="imagen_galeria">
+        <img src="{% static 'img/CUECA.jpg' %}" alt="">
+      </div>
+      <div class="imagen_galeria">
+        <img src="{% static 'img/clase-de-zumba.jpg' %}" alt="">
+      </div>
+      <div class="imagen_galeria">
+        <img src="{% static 'img/bordado.jpg' %}" alt="">
+      </div>
+      <div class="imagen_galeria">
+        <img src="{% static 'img/escritura.jpg' %}" alt="">
+      </div>
+      <div class="imagen_galeria">
+        <img src="{% static 'img/tango.jpg' %}" alt="">
+      </div>
+      <div class="imagen_galeria">
+        <img src="{% static 'img/lectura.jpeg' %}" alt="">
+      </div>
+      <div class="imagen_galeria">
+        <img src="{% static 'img/educacion_fisica.jpg' %}" alt="">
+      </div>
+    </div>
+  </div>
+</section>
 
 {% endblock contenido %}
 
 {% block js%}
 <script src="{% static 'js/card.js' %}"></script>
 {% endblock js %}
-

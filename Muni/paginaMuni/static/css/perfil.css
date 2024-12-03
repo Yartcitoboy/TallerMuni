@@ -31,7 +31,7 @@ body {
   position: relative;
   width: 150px;
   height: 150px;
-  margin: 0 auto 15px; /* Centrar la imagen horizontalmente */
+  margin: 0 auto 15px; 
 }
 
 .imagen-container img {
@@ -45,12 +45,12 @@ body {
 
 .imagen-container .cambiar-imagen {
   position: absolute;
-  bottom: -15px; /* Más abajo de la imagen */
-  right: -15px; /* Más a la derecha de la imagen */
+  bottom: -15px; 
+  right: -15px; 
   background-color: #0078d7;
   color: white;
   border: none;
-  width: 50px; /* Tamaño mayor para más visibilidad */
+  width: 50px; 
   height: 50px;
   border-radius: 50%;
   display: flex;
@@ -58,7 +58,7 @@ body {
   justify-content: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  font-size: 20px; /* Tamaño del icono */
+  font-size: 20px; 
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -82,11 +82,11 @@ body {
   background: #fff;
   padding: 40px;
   overflow-y: auto;
-  position: relative; /* Para posicionar el botón editar */
+  position: relative; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 60px; /* Espacio para el botón */
+  padding-bottom: 60px;
 }
 
 .carta .derecha .info,
@@ -150,7 +150,6 @@ body {
   font-size: 1.5rem;
 }
 
-/* Estilo del botón Editar Perfil */
 .editar-perfil {
   position: absolute;
   bottom: 20px;

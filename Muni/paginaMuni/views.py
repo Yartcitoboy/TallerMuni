@@ -146,6 +146,9 @@ def mi_vista(request):
 def bienvenida(request):
     return render(request, 'web/bienvenida.html')
 
+def perfil(request):
+    return render(request, 'web/perfil.html')
+
 def exit(request):
     logout(request)
     return redirect('index')

@@ -7,10 +7,16 @@
         url('../img/portada.jpg') no-repeat center center;
     background-size: cover;
     position: relative;
-    margin: 0 /* Ajuste para que la imagen se vea debajo del navbar fijo */
+    margin: 0
+}
+
+.bienvenida {
+    color: white;
+    margin: 50px 50px;
 }
 
 /* Sección galería */
+
 .galeria {
     background: #f2f2f2;
     padding: 20px;
@@ -30,12 +36,12 @@
 
 .imagenes_galeria {
     display: flex;
-    flex-direction: row; /* Alineamos las imágenes horizontalmente */
-    flex-wrap: wrap; /* Permite que las imágenes se ajusten en la siguiente fila si no caben */
-    gap: 20px; /* Espaciado entre las imágenes */
-    justify-content: center; /* Centra las imágenes dentro del contenedor */
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     width: 100%;
-    max-width: 1200px; /* Limitar el ancho máximo */
+    max-width: 1200px;
 }
 
 .imagen_galeria {
@@ -59,12 +65,62 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+/* Cart de Bienvenida al loguear */
+
+.bienvenida-container {
+    padding-left: 120px;
+    color: #c7c7c7c9;
+    user-select: none;
+}
+
+.bienvenida-titulo {
+    font-size: clamp(2rem, 4vw, 6rem);
+    font-weight: 700;
+    background: -webkit-linear-gradient(0deg, #f76591, #ffc16f);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    padding-left: 10px;
+    margin-bottom: 100px;
+}
+
+.bienvenida-mensaje {
+    font-size: clamp(1.5rem, 4vw, 1.2rem);
+    line-height: 1.6;
+    padding-right: 100px;
+    color: black;
+    margin-bottom: 400px;
+    color: #f2f2f2;
+    text-shadow: black;
+}
+
+/* Ajustes para dispositivos pequeños */
+@media (max-width: 768px) {
+    .bienvenida-container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .bienvenida-titulo {
+        font-size: 2rem;
+    }
+
+    .bienvenida-mensaje {
+        font-size: 1rem;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+
 /* Responsividad */
 @media (max-width: 768px) {
     .imagen_galeria {
         width: 250px;
         height: 350px;
     }
+
     .imagenes_galeria {
         gap: 15px;
     }
@@ -75,6 +131,7 @@
         width: 200px;
         height: 300px;
     }
+
     .imagenes_galeria {
         gap: 10px;
     }

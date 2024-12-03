@@ -21,11 +21,11 @@ html {
 
 /* Header */
 header {
-    position: relative; /* Mantiene el header en la parte superior */
+    position: relative; 
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px 5%; /* Ajusta el padding para que sea responsivo */
+    padding: 10px 5%; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,9 +39,9 @@ header {
 }
 
 .navegacion{
-    display: flex; /* Usar flexbox para alinear los elementos */
-    align-items: center; /* Centrar verticalmente los elementos */
-    margin-right: 50px; /* Espacio a la derecha */
+    display: flex; 
+    align-items: center;
+    margin-right: 50px; 
 }
 
 .navegacion a{
@@ -80,10 +80,19 @@ header {
     transform: scaleX(1);
 }
 
+.dropdown .btn-secondary {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+.dropdown .dropdown-menu {
+    min-width: 150px;
+    font-size: 0.9rem;
+}
 
 
-
-
+/* FOOTER */
 
 
 footer{
@@ -97,7 +106,7 @@ footer{
 .contenedor-footer{
     display: flex;
     justify-content: center;
-    align-items: center; /* Centra los elementos */
+    align-items: center; 
     width: 100%;
     border-top: 1px solid #F2F2F2;
 }

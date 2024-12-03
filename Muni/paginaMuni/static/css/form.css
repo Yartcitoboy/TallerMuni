@@ -27,7 +27,6 @@ a:hover {
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
 
-
 .tab-group {
   list-style: none;
   padding: 0;
@@ -67,15 +66,15 @@ a:hover {
 }
 
 .tab-title {
-  text-align: center; /* Centra horizontalmente el texto */
-  margin-top: 20px;  /* Espaciado superior */
-  font-family: Arial, sans-serif; /* Cambia a tu fuente preferida */
+  text-align: center; 
+  margin-top: 20px;  
+  font-family: Arial, sans-serif; 
 }
 
 .tab-title h1 {
-  font-size: 50px; /* Ajusta el tamaño de fuente */
-  font-weight: bold; /* Opcional, para negrita */
-  color: #ffffff; /* Cambia el color según tu diseño */
+  font-size: 50px; 
+  font-weight: bold; 
+  color: #ffffff; 
 }
 
 
