@@ -20,6 +20,15 @@
                 <form action="{% url 'registro' %}" method="post">
                     {% csrf_token %}
                     <div class="field-wrap">
+                        
+                        <select id="tipo" name="tipo" required>
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option value="adultoMayor">Adulto Mayor</option>
+                            <option value="instructor">Instructor</option>
+                        </select>
+                    </div>                   
+
+                    <div class="field-wrap">
                         <label>RUT<span class="req">*</span></label>
                         <input type="text" id="rut" name="rut" required autocomplete="off"/>
                     </div>

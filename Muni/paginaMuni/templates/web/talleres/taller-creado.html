@@ -1,0 +1,8 @@
+{% extends "web/base.html" %}
+{% block contenido %}
+<div class="container mt-5">
+    <h1>¡Taller creado con exito!</h1>
+    <p>Ahora tu taller sera visible para los adultos mayores, además podras ver tu taller en "tu Talleres".</p>
+    <a href="{% url 'index' %}" class="btn btn-primary">Volver a los talleres</a>
+</div>
+{% endblock %}

@@ -79,9 +79,35 @@ def taller_inscripcion(request):
 def inscripcion_exitosa(request):
     return render(request, 'web/talleres/inscripcion_exitosa.html')
 
+def crearTaller(request):
+    if request.user.tipo != 'instructor':  # Solo los instructores pueden crear talleres
+        messages.error(request, "No tienes permiso para acceder a esta página.")
+        return redirect('index')
+
+    if request.method == 'POST':
+        nombre = request.POST.get('nombre')
+        descripcion = request.POST.get('descripcion')
+        duracion = request.POST.get('duracion')
+        instructor = request.POST.get('instructor')
+
+        # Crear el taller
+        Taller.objects.create(
+            nombre=nombre,
+            descripcion=descripcion,
+            duracion=duracion,
+            instructor=instructor,
+        )
+        messages.success(request, "Taller creado con éxito.")
+        return redirect('tallerCreado')  # Redirige a la lista de talleres
+
+    return render(request, 'web/talleres/crear-taller.html')
+
+def tallerCreado(request):
+    return render(request, 'web/talleres/taller-creado.html')
 
 def registro(request):
     if request.method == "POST":
+        print(request.POST.get('tipo'))
         # Capturar datos
         rut = request.POST.get("rut")
         email = request.POST.get("email")
@@ -90,6 +116,7 @@ def registro(request):
         apellido2 = request.POST.get("apellido2")
         nacimiento = request.POST.get("nacimiento")
         telefono = request.POST.get("telefono")
+        tipo = request.POST.get("tipo")
 
         if Usuario.objects.filter(rut=rut).exists():
             messages.error(request, f"El RUT {rut} ya está registrado.")
@@ -103,6 +130,7 @@ def registro(request):
                 apellido2=apellido2,
                 nacimiento=nacimiento,
                 telefono=telefono,
+                tipo=tipo,
                 password=make_password(contraseña_inicial),
             )
             usuario.save()                  # Guarda la inscripción
@@ -141,7 +169,7 @@ def bienvenida(request):
     return render(request, 'web/bienvenida.html')
 
 def perfil(request):
-    return render(request, 'web/perfil.html')
+    return render(request, 'web/navbar/perfil.html')
 
 def exit(request):
     logout(request)

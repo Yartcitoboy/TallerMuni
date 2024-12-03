@@ -19,6 +19,12 @@ class UsuarioManager(BaseUserManager):
         return self.create_user(email, rut, password, **extra_fields)
 
 class Usuario(AbstractBaseUser):
+    
+    TIPOS_USUARIO = [
+        ('AM', 'Adulto Mayor'),
+        ('IN', 'Instructor'),
+    ]
+
     rut = models.CharField(max_length=10, unique=True)
     nombre = models.CharField(max_length=50)
     apellido1 = models.CharField(max_length=50)
@@ -26,9 +32,11 @@ class Usuario(AbstractBaseUser):
     nacimiento = models.DateField()
     email = models.EmailField(max_length=120, unique=True)
     telefono = models.CharField(max_length=15)
+    tipo = models.CharField(max_length=15, choices=TIPOS_USUARIO, default='AM')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['rut', 'nombre']
+    
 
     objects = UsuarioManager()
 

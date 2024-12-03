@@ -20,19 +20,23 @@
     
             <nav class="navegacion">
                 <a href="{% url 'index' %}">Inicio</a>
-                <a href="{% url 'taller' %}" onclick="cargarTalleres()">Talleres</a>
-                <a href="#">Contacto</a>
-    
+            
                 {% if request.user.is_authenticated %}
-
-                <a href="{% url 'exit' %}">Cerrar sesión</a>
-
+                    {% if request.user.is_authenticated and request.user.tipo == 'instructor' %}
+                        <a href="{% url 'crearTaller' %}">Crear Talleres</a>
+                    {% else %}
+                        <a href="{% url 'taller' %}" onclick="cargarTalleres()">Talleres</a>
+                    {% endif %}
+                    <a href="#">Contacto</a>
+                    <a href="{% url 'exit' %}">Cerrar sesión</a>
                 {% else %}
-                <!-- Botones de iniciar sesión y registro -->
-                <a href="{% url 'login' %}">Iniciar sesión</a>
-                <a href="{% url 'registro' %}">Registrarse</a>
+                    <a href="{% url 'taller' %}" onclick="cargarTalleres()">Talleres</a>
+                    <a href="#">Contacto</a>
+                    <a href="{% url 'login' %}">Iniciar sesión</a>
+                    <a href="{% url 'registro' %}">Registrarse</a>
                 {% endif %}
             </nav>
+            
         </header>
     </section>
     
