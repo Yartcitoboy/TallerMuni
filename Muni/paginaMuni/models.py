@@ -65,7 +65,7 @@ class Taller(models.Model):
     instructor = models.CharField(max_length=100)
 
     def get_full_name(self):
-        return f"{self.nombre} {self.apellido1} {self.apellido2}"
+        return f"{self.nombre}"
 
     def __str__(self):
         return self.get_full_name()
