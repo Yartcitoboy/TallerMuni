@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
-from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,21 +80,21 @@ LOGIN_REDIRECT_URL = '/login/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # },
     'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'localhost/xe',
-        'USER': 'Art',
-        'PASSWORD': 'Art',
-        'TEST': {
-            'USER': 'default_test',
-            'TBLSPACE': 'default_test_tbls',
-            'TBLSPACE_TMP': 'default_test_tbls_tmp',
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.oracle',
+    #     'NAME': 'localhost/xe',
+    #     'USER': 'Art',
+    #     'PASSWORD': 'Art',
+    #     'TEST': {
+    #         'USER': 'default_test',
+    #         'TBLSPACE': 'default_test_tbls',
+    #         'TBLSPACE_TMP': 'default_test_tbls_tmp',
+    #     },
+    # },
 }
 
 

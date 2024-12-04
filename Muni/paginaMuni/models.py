@@ -16,6 +16,7 @@ class UsuarioManager(BaseUserManager):
     def create_superuser(self, email, rut, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('nacimiento', '2000-01-01')
         return self.create_user(email, rut, password, **extra_fields)
 
 class Usuario(AbstractBaseUser):
@@ -33,6 +34,9 @@ class Usuario(AbstractBaseUser):
     email = models.EmailField(max_length=120, unique=True)
     telefono = models.CharField(max_length=15)
     tipo = models.CharField(max_length=15, choices=TIPOS_USUARIO, default='AM')
+    
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['rut', 'nombre']
@@ -45,6 +49,14 @@ class Usuario(AbstractBaseUser):
     
     def __str__(self):
         return f"{self.nombre} {self.apellido1} {self.apellido2}"
+    
+    def has_perm(self, perm, obj=None):
+        "Does the user have a specific permission?"
+        return self.is_superuser
+
+    def has_module_perms(self, app_label):
+        "Does the user have permission to view the app `app_label`?"
+        return self.is_superuser
     
 class Taller(models.Model):
     nombre = models.CharField(max_length=100)
